@@ -1,0 +1,36 @@
+@use "./variables" as *;
+
+@mixin font-l($weight: $weight-regular) {
+  font-family: $font-family-base;
+  font-size: $font-l;
+  font-weight: $weight;
+  line-height: $line-height-l;
+}
+
+@mixin font-m($weight: $weight-regular) {
+  font-family: $font-family-base;
+  font-size: $font-m;
+  font-weight: $weight;
+  line-height: $line-height-m;
+}
+
+@mixin font-s($weight: $weight-regular) {
+  font-family: $font-family-base;
+  font-size: $font-s;
+  font-weight: $weight;
+  line-height: $line-height-s;
+}
+
+@mixin font-xs($weight: $weight-regular) {
+  font-family: $font-family-base;
+  font-size: $font-xs;
+  font-weight: $weight;
+  line-height: $line-height-xs;
+}
+
+@mixin font-2xs($weight: $weight-regular) {
+  font-family: $font-family-base;
+  font-size: $font-2xs;
+  font-weight: $weight;
+  line-height: $line-height-2xs;
+}
