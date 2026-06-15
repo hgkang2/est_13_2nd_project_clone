@@ -4,7 +4,7 @@ ex) 상품목록 - 송민혁
 코드 블라블라
  */
 @use "./typography" as typo;
-@use "./variables" as var;
+@use "./variables" as vars;
 @use "./colors" as clr;
 
 // 예시 사용법
@@ -12,3 +12,605 @@ ex) 상품목록 - 송민혁
 //   @include typo.font-l(var.$weight-bold);
 //   color: clr.$color-primary;
 // }
+// support page - 강형규
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: vars.$font-family-base;
+}
+
+body {
+  background-color: #f8faff;
+  color: clr.$color-dark;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+// 메인 타이틀 & 통합 검색 바 (Hero Section)
+.hero-section {
+  text-align: center;
+  padding: 40px 0 50px;
+
+  .sub-title {
+    color: clr.$color-primary;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+
+    @include typo.font-xs(vars.$weight-bold);
+  }
+
+  .main-title {
+    font-size: vars.$font-l; // font-l → font-xl 로 변수명 수정
+    font-weight: vars.$weight-bold;
+    color: clr.$color-title;
+    margin-bottom: 15px;
+  }
+
+  .desc {
+    color: clr.$color-muted;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .search-bar-container {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.06);
+
+    .search-bar-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: clr.$color-muted;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px 16px 50px;
+      border: 1px solid clr.$color-border;
+      border-radius: 50px;
+      font-size: 15px;
+      outline: none;
+      background-color: clr.$color-white;
+      transition: border 0.2s;
+      &::placeholder {
+        color: clr.$color-muted;
+      }
+
+      &:focus {
+        border-color: clr.$color-primary;
+      }
+    }
+  }
+}
+
+//2컬럼 레이아웃 대시보드 (AI 챗봇 + 마이쇼핑)
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.chat-card {
+  background-color: #0f2042;
+  border-radius: 20px;
+  padding: 25px;
+  color: clr.$color-white;
+  box-shadow: 0 12px 32px rgba(15, 32, 66, 0.15);
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+
+  .chat-header {
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+
+    .chat-user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+
+      .live-badge {
+        background-color: #22c55e;
+        color: clr.$color-white;
+        padding: 2px 6px;
+        border-radius: 4px;
+
+        @include typo.font-2xs(vars.$weight-bold);
+      }
+
+      .chat-title {
+        font-size: 18px;
+        font-weight: vars.$weight-bold;
+      }
+    }
+
+    .chat-sub-text {
+      // rgba(#hex) → rgba(r,g,b,a) 로 수정
+      color: rgba(255, 255, 255, 0.6);
+
+      @include typo.font-xs();
+    }
+
+    .speed-tag {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 15px;
+
+    .message {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+
+      @include typo.font-s();
+
+      &.system {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-top-left-radius: 4px;
+        color: #f1f5f9;
+      }
+
+      &.user {
+        background-color: clr.$color-primary;
+        color: clr.$color-white;
+        margin-left: auto;
+        border-top-right-radius: 4px;
+      }
+
+      &.bot {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: clr.$color-white;
+        border-top-left-radius: 4px;
+      }
+    }
+  }
+
+  .quick-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+
+    .quick-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: clr.$color-white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      @include typo.font-xs();
+
+      &:hover {
+        background: clr.$color-primary;
+        border-color: clr.$color-primary;
+      }
+    }
+  }
+
+  .chat-input-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: clr.$color-white;
+      padding: 10px 16px;
+
+      @include typo.font-s();
+
+      // & 추가로 수정 (핵심 버그)
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    button {
+      background-color: clr.$color-primary;
+      color: clr.$color-white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      @include typo.font-s(vars.$weight-bold);
+
+      &:hover {
+        background-color: clr.$color-primary-dark;
+      }
+    }
+  }
+}
+
+.my-status-card {
+  background: clr.$color-white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid clr.$color-border;
+  display: flex;
+  flex-direction: column;
+
+  .status-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+
+    h4 {
+      color: clr.$color-dark;
+
+      @include typo.font-m(vars.$weight-bold);
+    }
+
+    .user-name-tag {
+      margin-left: auto;
+      background: clr.$color-chip-bg;
+      color: clr.$color-primary;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: vars.$weight-bold;
+    }
+  }
+
+  .status-content {
+    flex: 1;
+
+    .status-item {
+      background: #f8faff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #eef2f9;
+
+      .item-title {
+        display: flex;
+        justify-content: space-between;
+        color: clr.$color-muted;
+
+        @include typo.font-xs();
+      }
+
+      .highlight-blue {
+        color: clr.$color-primary;
+        font-weight: vars.$weight-bold;
+      }
+      .highlight-green {
+        color: #22c55e;
+        font-weight: vars.$weight-bold;
+      }
+
+      .item-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+
+        strong,
+        span {
+          color: clr.$color-dark;
+
+          @include typo.font-s();
+        }
+
+        .arrow-btn {
+          background: none;
+          border: none;
+          color: clr.$color-muted;
+          cursor: pointer;
+
+          @include typo.font-xs();
+        }
+      }
+    }
+  }
+
+  .status-footer-btns {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 10px;
+    margin-top: 10px;
+
+    .footer-sub-btn {
+      background: clr.$color-white;
+      border: 1px solid clr.$color-border;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      @include typo.font-s();
+    }
+
+    .footer-main-btn {
+      background: clr.$color-chip-bg;
+      border: 1px solid clr.$color-chip-border;
+      color: clr.$color-primary;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      @include typo.font-s(vars.$weight-bold);
+    }
+  }
+}
+
+// 실시간 인기 TOP 5 섹션
+.top-queries-section {
+  margin-bottom: 60px;
+
+  .section-title {
+    font-size: 20px;
+    color: clr.$color-dark;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: vars.$weight-bold;
+
+    .time-stamp {
+      color: clr.$color-muted;
+
+      @include typo.font-xs();
+    }
+  }
+
+  .top-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+
+    .top-card {
+      background: clr.$color-white;
+      border: 1px solid clr.$color-border;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+      // transition 한 줄로 수정 (멀티라인 파싱 오류 방지)
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.08);
+      }
+
+      .num {
+        font-size: 20px;
+        color: clr.$color-primary;
+        display: block;
+        margin-bottom: 10px;
+        font-weight: vars.$weight-bold;
+      }
+
+      h5 {
+        color: clr.$color-dark;
+        margin-bottom: 4px;
+
+        @include typo.font-s();
+      }
+
+      p {
+        color: clr.$color-muted;
+
+        @include typo.font-xs();
+      }
+    }
+  }
+}
+
+// 자주 묻는 질문 FAQ (탭 컴포넌트 & 아코디언)
+.faq-section {
+  .faq-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+
+    .section-title {
+      font-size: 20px;
+      color: clr.$color-dark;
+      font-weight: vars.$weight-bold;
+    }
+
+    .faq-tip {
+      color: clr.$color-muted;
+
+      @include typo.font-s();
+    }
+  }
+
+  .faq-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid clr.$color-border;
+    padding-bottom: 15px;
+
+    .tab-btn {
+      background: clr.$color-filter-btn;
+      border: 1px solid clr.$color-border;
+      padding: 10px 18px;
+      border-radius: 30px;
+      color: clr.$color-text;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      @include typo.font-s();
+
+      &:hover {
+        background-color: clr.$color-filter-hover;
+      }
+
+      &.active {
+        background: clr.$color-primary;
+        color: clr.$color-white;
+        border-color: clr.$color-primary;
+        font-weight: vars.$weight-bold;
+      }
+    }
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .faq-item {
+      background: clr.$color-white;
+      border: 1px solid clr.$color-border;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+
+      .faq-question {
+        width: 100%;
+        padding: 18px 24px;
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        text-align: left;
+
+        .badge {
+          padding: 3px 8px;
+          border-radius: 4px;
+          margin-right: 15px;
+
+          @include typo.font-2xs(vars.$weight-bold);
+
+          &.badge-delivery {
+            background: #e0f2fe;
+            color: #0369a1;
+          }
+          &.badge-fitting {
+            background: clr.$color-chip-bg;
+            color: clr.$color-primary;
+          }
+          &.badge-payment {
+            background: #fce7f3;
+            color: #b91c1c;
+          }
+          &.badge-lens {
+            background: #fef9c3;
+            color: #a16207;
+          }
+        }
+
+        .q-text {
+          color: clr.$color-dark;
+          flex: 1;
+
+          @include typo.font-s(vars.$weight-bold);
+        }
+
+        .arrow {
+          color: clr.$color-muted;
+          transition: transform 0.2s;
+
+          @include typo.font-xs();
+        }
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        background: #fcfdfe;
+        transition: max-height 0.2s ease-out;
+        border-top: 0 solid clr.$color-border;
+
+        p {
+          padding: 20px 24px;
+          color: clr.$color-text;
+
+          @include typo.font-s();
+        }
+      }
+
+      &.active {
+        .faq-answer {
+          max-height: 200px;
+          border-top: 1px solid clr.$color-border;
+        }
+        .faq-question .arrow {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+// 하단 유도 배너 (CTA Banner)
+.cta-banner {
+  background: clr.$color-chip-bg;
+  border: 1px dashed clr.$color-primary;
+  border-radius: 16px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+
+  .cta-text {
+    h4 {
+      color: clr.$color-dark;
+      margin-bottom: 4px;
+
+      @include typo.font-m(vars.$weight-bold);
+    }
+    p {
+      color: clr.$color-text;
+
+      @include typo.font-xs();
+    }
+  }
+
+  .cta-btn {
+    background: clr.$color-primary;
+    color: clr.$color-white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    @include typo.font-s(vars.$weight-bold);
+
+    &:hover {
+      background-color: clr.$color-primary-dark;
+    }
+  }
+}
