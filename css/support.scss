@@ -4,7 +4,7 @@ ex) 상품목록 - 송민혁
 코드 블라블라
  */
 @use "./typography" as typo;
-@use "./variables" as vars;
+@use "./variables" as var;
 @use "./colors" as clr;
 
 // 예시 사용법
@@ -17,7 +17,7 @@ ex) 상품목록 - 송민혁
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: vars.$font-family-base;
+  font-family: var.$font-family-base;
 }
 
 body {
@@ -40,12 +40,12 @@ body {
     letter-spacing: 1px;
     margin-bottom: 10px;
 
-    @include typo.font-xs(vars.$weight-bold);
+    @include typo.font-xs(var.$weight-bold);
   }
 
   .main-title {
-    font-size: vars.$font-l; // font-l
-    font-weight: vars.$weight-bold;
+    font-size: var.$font-l; // font-l
+    font-weight: var.$weight-bold;
     color: clr.$color-title;
     margin-bottom: 15px;
   }
@@ -126,12 +126,12 @@ body {
         padding: 2px 6px;
         border-radius: 4px;
 
-        @include typo.font-2xs(vars.$weight-bold);
+        @include typo.font-2xs(var.$weight-bold);
       }
 
       .chat-title {
         font-size: 18px;
-        font-weight: vars.$weight-bold;
+        font-weight: var.$weight-bold;
       }
     }
 
@@ -243,7 +243,7 @@ body {
       cursor: pointer;
       transition: background 0.2s;
 
-      @include typo.font-s(vars.$weight-bold);
+      @include typo.font-s(var.$weight-bold);
 
       &:hover {
         background-color: clr.$color-primary-dark;
@@ -270,7 +270,7 @@ body {
     h4 {
       color: clr.$color-dark;
 
-      @include typo.font-m(vars.$weight-bold);
+      @include typo.font-m(var.$weight-bold);
     }
 
     .user-name-tag {
@@ -280,7 +280,7 @@ body {
       font-size: 11px;
       padding: 4px 10px;
       border-radius: 4px;
-      font-weight: vars.$weight-bold;
+      font-weight: var.$weight-bold;
     }
   }
 
@@ -304,11 +304,11 @@ body {
 
       .highlight-blue {
         color: clr.$color-primary;
-        font-weight: vars.$weight-bold;
+        font-weight: var.$weight-bold;
       }
       .highlight-green {
         color: #22c55e;
-        font-weight: vars.$weight-bold;
+        font-weight: var.$weight-bold;
       }
 
       .item-body {
@@ -360,7 +360,7 @@ body {
       border-radius: 10px;
       cursor: pointer;
 
-      @include typo.font-s(vars.$weight-bold);
+      @include typo.font-s(var.$weight-bold);
     }
   }
 }
@@ -376,7 +376,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: vars.$weight-bold;
+    font-weight: var.$weight-bold;
 
     .time-stamp {
       color: clr.$color-muted;
@@ -412,7 +412,7 @@ body {
         color: clr.$color-primary;
         display: block;
         margin-bottom: 10px;
-        font-weight: vars.$weight-bold;
+        font-weight: var.$weight-bold;
       }
 
       h5 {
@@ -442,7 +442,7 @@ body {
     .section-title {
       font-size: 20px;
       color: clr.$color-dark;
-      font-weight: vars.$weight-bold;
+      font-weight: var.$weight-bold;
     }
 
     .faq-tip {
@@ -478,7 +478,7 @@ body {
         background: clr.$color-primary;
         color: clr.$color-white;
         border-color: clr.$color-primary;
-        font-weight: vars.$weight-bold;
+        font-weight: var.$weight-bold;
       }
     }
   }
@@ -510,7 +510,7 @@ body {
           border-radius: 4px;
           margin-right: 15px;
 
-          @include typo.font-2xs(vars.$weight-bold);
+          @include typo.font-2xs(var.$weight-bold);
 
           &.badge-delivery {
             background: #e0f2fe;
@@ -534,7 +534,7 @@ body {
           color: clr.$color-dark;
           flex: 1;
 
-          @include typo.font-s(vars.$weight-bold);
+          @include typo.font-s(var.$weight-bold);
         }
 
         .arrow {
@@ -589,7 +589,7 @@ body {
       color: clr.$color-dark;
       margin-bottom: 4px;
 
-      @include typo.font-m(vars.$weight-bold);
+      @include typo.font-m(var.$weight-bold);
     }
     p {
       color: clr.$color-text;
@@ -607,7 +607,7 @@ body {
     cursor: pointer;
     transition: background 0.2s;
 
-    @include typo.font-s(vars.$weight-bold);
+    @include typo.font-s(var.$weight-bold);
 
     &:hover {
       background-color: clr.$color-primary-dark;
