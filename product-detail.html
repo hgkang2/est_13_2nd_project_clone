@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUNZ | 상품 상세</title>
+
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./css/product-detail.css" />
+  </head>
+  <body>
+    <main class="product-detail-container">
+      <section class="product-gallery">
+        <div class="main-image-wrap">
+          <div class="badge-group">
+            <span class="badge badge-new">NEW</span>
+            <span class="badge badge-discount">-17%</span>
+          </div>
+          <button type="button" class="btn-wish" aria-label="찜하기"></button>
+          <img src="./img/product-main.jpg" alt="Classic Aviator 정면 컷" class="main-img" />
+        </div>
+        <ul class="thumbnail-list">
+          <li class="thumbnail-item active"><img src="./img/product-thumb1.jpg" alt="썸네일 1" /></li>
+          <li class="thumbnail-item"><img src="./img/product-thumb2.jpg" alt="썸네일 2" /></li>
+          <li class="thumbnail-item"><img src="./img/product-thumb3.jpg" alt="썸네일 3" /></li>
+          <li class="thumbnail-item"><img src="./img/product-thumb4.jpg" alt="썸네일 4" /></li>
+        </ul>
+      </section>
+
+      <section class="brand-benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon-wrap">
+            <span class="material-icons-outlined">local_shipping</span>
+          </div>
+          <strong class="benefit-title">무료배송</strong>
+          <span class="benefit-desc">5만원 이상</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon-wrap">
+            <span class="material-icons-outlined">replay</span>
+          </div>
+          <strong class="benefit-title">30일 반품</strong>
+          <span class="benefit-desc">무료 반품</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon-wrap">
+            <span class="material-icons-outlined">shield</span>
+          </div>
+          <strong class="benefit-title">정품 보증</strong>
+          <span class="benefit-desc">1년 A/S</span>
+        </div>
+      </section>
+
+      <section class="product-info-section">
+        <span class="brand-name">ACC</span>
+        <h2 class="product-title">Classic Aviator</h2>
+        <div class="rating-group">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <span class="rating-score">4.8</span>
+          <span class="review-count">(99+)</span>
+        </div>
+        <div class="price-group">
+          <strong class="current-price">189,000원</strong>
+          <span class="original-price">229,000원</span>
+          <span class="discount-rate">17% OFF</span>
+        </div>
+        <div class="option-group">
+          <span class="option-label">컬러</span>
+          <div class="color-chips">
+            <button type="button" class="chip chip-grey active" aria-label="그레이"></button>
+            <button type="button" class="chip chip-yellow" aria-label="옐로우"></button>
+            <button type="button" class="chip chip-black" aria-label="블랙"></button>
+          </div>
+        </div>
+        <div class="action-button-group">
+          <button type="button" class="btn-primary btn-try-on">
+            <span class="material-icons">visibility</span> AI 가상 피팅하기 (AI TRY-ON)
+          </button>
+          <div class="sub-buttons">
+            <button type="button" class="btn-secondary btn-cart-add">
+              <span class="material-icons">shopping_bag</span> 장바구니 담기
+            </button>
+            <button type="button" class="btn-secondary btn-buy">
+              <span class="material-icons">credit_card</span> 구매하기
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-specs-section">
+        <h3 class="specs-heading">제품 사양</h3>
+        <div class="specs-box">
+          <div class="spec-item"><span class="spec-label">렌즈 가로</span><span class="spec-value">49mm</span></div>
+          <div class="spec-item"><span class="spec-label">브릿지</span><span class="spec-value">21mm</span></div>
+          <div class="spec-item"><span class="spec-label">템플 길이</span><span class="spec-value">150mm</span></div>
+          <div class="spec-item"><span class="spec-label">프레임 정면</span><span class="spec-value">142mm</span></div>
+          <div class="spec-item"><span class="spec-label">렌즈 세로</span><span class="spec-value">42mm</span></div>
+          <div class="spec-item">
+            <span class="spec-label">무게</span><span class="spec-value">18g (렌즈 제외)</span>
+          </div>
+          <div class="spec-item"><span class="spec-label">소재</span><span class="spec-value">Acetate</span></div>
+          <div class="spec-item"><span class="spec-label">제조국</span><span class="spec-value">China</span></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
