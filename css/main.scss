@@ -8,7 +8,7 @@
   background-color: clr.$color-background;
   .hero-wrapper {
     margin: 0 auto;
-    width: var.$desktop;
+    max-width: var.$desktop;
   }
 }
 
@@ -99,7 +99,7 @@
   padding: 110px 80px 120px;
 
   .product-wrapper {
-    width: var.$desktop;
+    max-width: var.$desktop;
     margin: 0 auto;
 
     .section-title {
