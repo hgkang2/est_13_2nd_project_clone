@@ -67,7 +67,9 @@
       color: clr.$color-text;
       background-color: clr.$color-background;
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 
       &::placeholder {
         color: clr.$color-border-light;
@@ -95,7 +97,9 @@
       font-weight: var.$weight-bold;
       transition: opacity 0.15s ease;
 
-      &:hover { opacity: 0.75; }
+      &:hover {
+        opacity: 0.75;
+      }
     }
   }
 
@@ -110,10 +114,16 @@
     font-weight: var.$weight-bold;
     line-height: 1.6;
     border-radius: 8px;
-    transition: background-color 0.15s ease, transform 0.1s;
+    transition:
+      background-color 0.15s ease,
+      transform 0.1s;
 
-    &:hover  { background-color: clr.$color-primary-dark; }
-    &:active { transform: scale(0.99); }
+    &:hover {
+      background-color: clr.$color-primary-dark;
+    }
+    &:active {
+      transform: scale(0.99);
+    }
   }
 
   // 로그인 안내
@@ -131,7 +141,9 @@
       font-weight: var.$weight-bold;
       transition: opacity 0.15s ease;
 
-      &:hover { opacity: 0.75; }
+      &:hover {
+        opacity: 0.75;
+      }
     }
   }
 
