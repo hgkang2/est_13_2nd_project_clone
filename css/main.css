@@ -97,6 +97,10 @@
 .product-section {
   background: #ffffff;
 }
+.product-section .product-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
 
 .product-section .product-grid {
   display: grid;
