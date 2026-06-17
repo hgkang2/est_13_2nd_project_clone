@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .signup-card .form-group .form-label {
   font-family: "Inter", sans-serif;
