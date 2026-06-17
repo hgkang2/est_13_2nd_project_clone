@@ -60,6 +60,10 @@ body {
   display: flex;
   align-items: center;
   gap: 40px;
+  .logo a {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .header-wrapper .header-left .gnb-list {
@@ -71,6 +75,63 @@ body {
 .header-wrapper .header-actions {
   display: flex;
   gap: 15px;
+}
+.menu-btn {
+  display: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .header-wrapper {
+    width: var.$tablet;
+    padding: 20px 40px;
+  }
+}
+@media (max-width: 767px) {
+  .header-wrapper {
+    width: var.$mobile;
+    padding: 20px 20px;
+    .gnb,
+    .header-actions {
+      display: none;
+    }
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    top: 73px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 73px);
+    background: clr.$color-white;
+    border-left: 1px solid clr.$color-border;
+    transition: right 0.3s;
+    z-index: 1000;
+
+    &.is-open {
+      right: 0;
+    }
+
+    ul {
+      padding: 24px;
+    }
+
+    li + li {
+      margin-top: 20px;
+    }
+  }
 }
 // -----------------------------footer -송민혁
 .footer-wrapper {
