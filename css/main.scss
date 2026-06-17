@@ -96,8 +96,11 @@
 
 .product-section {
   background: clr.$color-white;
+  .product-wrapper {
+    width: var.$desktop;
+    margin: 0 auto;
+  }
 }
-
 .product-section .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
