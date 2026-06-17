@@ -3,7 +3,7 @@
 @use "./colors" as clr;
 /* 메인 페이지, Hero Section 스타일링 - 최수민 & 송민혁 */
 .hero-section {
-  padding: 120px 80px;
+  padding: 120px 80px 50px;
   text-align: center;
   background-color: clr.$color-background;
   .hero-wrapper {
@@ -93,12 +93,18 @@
     }
   }
 }
-
+//  상품 섹션
 .product-section {
   background: clr.$color-white;
+  padding: 110px 80px 120px;
+
   .product-wrapper {
     width: var.$desktop;
     margin: 0 auto;
+
+    .section-title {
+      margin-bottom: 16px;
+    }
   }
 }
 .product-section .product-grid {
@@ -139,8 +145,6 @@
 
 .product-section .product-grid .product-card .product-info .product-name {
   margin-bottom: 8px;
-  font-size: 16px;
-  @include typo.font-m(var.$weight-bold);
   color: clr.$color-dark;
 }
 

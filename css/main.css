@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 메인 페이지, Hero Section 스타일링 - 최수민 & 송민혁 */
 .hero-section {
-  padding: 120px 80px;
+  padding: 120px 80px 50px;
   text-align: center;
   background-color: rgba(249, 248, 246, 0.9);
 }
@@ -96,10 +96,14 @@
 
 .product-section {
   background: #ffffff;
+  padding: 110px 80px 120px;
 }
 .product-section .product-wrapper {
   width: 1200px;
   margin: 0 auto;
+}
+.product-section .product-wrapper .section-title {
+  margin-bottom: 16px;
 }
 
 .product-section .product-grid {
@@ -140,11 +144,6 @@
 
 .product-section .product-grid .product-card .product-info .product-name {
   margin-bottom: 8px;
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
   color: #18181b;
 }
 
