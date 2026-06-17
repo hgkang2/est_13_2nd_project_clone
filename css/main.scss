@@ -1,11 +1,15 @@
 @use "./typography" as typo;
 @use "./variables" as var;
 @use "./colors" as clr;
-/* 메인 페이지, Hero Section 스타일링 - 최수민 */
+/* 메인 페이지, Hero Section 스타일링 - 최수민 & 송민혁 */
 .hero-section {
-  padding: 80px 0;
+  padding: 120px 80px;
   text-align: center;
   background-color: clr.$color-background;
+  .hero-wrapper {
+    margin: 0 auto;
+    width: var.$desktop;
+  }
 }
 
 .hero-section .ai-badge {
@@ -59,11 +63,10 @@
   border-radius: 8px;
 }
 
-.stats-section {
-  padding: 40px 0;
+.stats {
+  padding-top: 40px;
   border-top: 1px solid clr.$color-border;
-  border-bottom: 1px solid clr.$color-border;
-  margin-bottom: 60px;
+  margin-top: 80px;
 
   .stats-list {
     display: flex;
@@ -92,9 +95,12 @@
 }
 
 .product-section {
-  padding: 60px 0;
+  background: clr.$color-white;
+  .product-wrapper {
+    width: var.$desktop;
+    margin: 0 auto;
+  }
 }
-
 .product-section .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

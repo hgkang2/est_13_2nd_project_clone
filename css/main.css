@@ -1,9 +1,13 @@
 @charset "UTF-8";
-/* 메인 페이지, Hero Section 스타일링 - 최수민 */
+/* 메인 페이지, Hero Section 스타일링 - 최수민 & 송민혁 */
 .hero-section {
-  padding: 80px 0;
+  padding: 120px 80px;
   text-align: center;
   background-color: rgba(249, 248, 246, 0.9);
+}
+.hero-section .hero-wrapper {
+  margin: 0 auto;
+  width: 1200px;
 }
 
 .hero-section .ai-badge {
@@ -60,29 +64,28 @@
   border-radius: 8px;
 }
 
-.stats-section {
-  padding: 40px 0;
+.stats {
+  padding-top: 40px;
   border-top: 1px solid #e4e4e7;
-  border-bottom: 1px solid #e4e4e7;
-  margin-bottom: 60px;
+  margin-top: 80px;
 }
-.stats-section .stats-list {
+.stats .stats-list {
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style: none;
 }
-.stats-section .stats-list .stat-item {
+.stats .stats-list .stat-item {
   text-align: center;
 }
-.stats-section .stats-list .stat-item .stat-value {
+.stats .stats-list .stat-item .stat-value {
   display: block;
   font-size: 32px;
   font-weight: 700;
   color: #2563eb;
   margin-bottom: 4px;
 }
-.stats-section .stats-list .stat-item .stat-label {
+.stats .stats-list .stat-item .stat-label {
   font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -92,7 +95,11 @@
 }
 
 .product-section {
-  padding: 60px 0;
+  background: #ffffff;
+}
+.product-section .product-wrapper {
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .product-section .product-grid {

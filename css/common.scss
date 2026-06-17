@@ -24,9 +24,23 @@ ex) 상품목록 - 송민혁
   border: 0;
 }
 
+body {
+  background: clr.$color-background;
+}
+// -------------------------------- 공통 폰트
+
+// h2
+.heading-l {
+  @include typo.font-l(var.$weight-bold);
+}
+// h3
+.heading-xs {
+  @include typo.font-xs(var.$weight-bold);
+}
 // ---------------------------------header -- 최수민(송민혁 css 수정)
 header {
   border-bottom: 1px solid clr.$color-border;
+  background: rgba(#e4e4e7, 0.5);
 }
 .header-wrapper {
   display: flex;
