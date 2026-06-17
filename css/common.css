@@ -30,16 +30,16 @@ body {
   line-height: 1.4;
 }
 
-.heading-m {
+.heading-xs {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.5;
 }
 
-.heading-xs {
+.heading-m {
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
 }
