@@ -15,8 +15,13 @@ ex) 상품목록 - 송민혁
   border: 0;
 }
 
+body {
+  background: rgba(249, 248, 246, 0.9);
+}
+
 header {
   border-bottom: 1px solid #e4e4e7;
+  background: rgba(228, 228, 231, 0.5);
 }
 
 .header-wrapper {
