@@ -35,12 +35,12 @@ body {
   @include typo.font-l(var.$weight-bold);
 }
 // h3
-.heading-m {
-  @include typo.font-m(var.$weight-bold);
-}
-// h4
 .heading-xs {
   @include typo.font-xs(var.$weight-bold);
+}
+// h4
+.heading-m {
+  @include typo.font-m(var.$weight-bold);
 }
 // ---------------------------------header -- 최수민(송민혁 css 수정)
 #header {
