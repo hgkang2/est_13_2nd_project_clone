@@ -55,7 +55,9 @@ function productHTML(p, showBadge = false) {
               </div>
               <div class="product-info">
                 <span class="product-brand heading-xs">${p.brand}</span>
-                <h3 class="product-name heading-m">${p.title}</h3>
+                <a href="product-detail.html?${p.id}">
+                  <h3 class="product-name heading-m">${p.title}</h3>
+                </a>
                 <div class="color-options">
                   <span class="color-swatch silver"></span>
                   <span class="color-swatch yellow"></span>
