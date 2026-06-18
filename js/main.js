@@ -45,11 +45,13 @@ function renderSkeleton() {
 function productHTML(p, showBadge = false) {
   return `<li class="product-card">
               <div class="product-image-area">
-                <img
-                  src="${p.thumbnail}"
-                  alt="${p.title}"
-                />
-                ${showBadge ? '<span class="badge new-badge">NEW</span>' : ""}
+                <a href="product-detail.html?${p.id}">
+                  <img
+                    src="${p.thumbnail}"
+                    alt="${p.title}"
+                  />
+                  ${showBadge ? '<span class="badge new-badge">NEW</span>' : ""}
+                </a>
               </div>
               <div class="product-info">
                 <span class="product-brand heading-xs">${p.brand}</span>
