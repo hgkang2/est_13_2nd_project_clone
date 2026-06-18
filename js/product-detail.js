@@ -1,3 +1,5 @@
+const API = "./data/product.json";
+
 // 0. 토스트 메시지
 function showToast(message) {
   const toast = document.querySelector("#toast");
@@ -9,8 +11,44 @@ function showToast(message) {
   }, 2000);
 }
 
+// URL에서 id로 상품 찾아서 메인 이미지 + 첫 번째 썸네일 적용
+async function loadProductDetail() {
+  const params = new URLSearchParams(window.location.search);
+  const productId = Number(params.get("id"));
+
+  if (!productId) {
+    console.error("URL에 id 파라미터가 없습니다.");
+    return;
+  }
+
+  const res = await fetch(API);
+  const { products } = await res.json();
+  const product = products.find(p => p.id === productId);
+
+  if (!product) {
+    console.error("해당 상품을 찾을 수 없습니다. id:", productId);
+    return;
+  }
+
+  // 메인 이미지 교체
+  const mainImg = document.querySelector(".main-img");
+  if (mainImg) {
+    mainImg.src = product.thumbnail;
+    mainImg.alt = product.title;
+  }
+
+  // 첫 번째 썸네일 이미지도 교체
+  const firstThumbnailImg = document.querySelector(
+    ".thumbnail-item:first-child img",
+  );
+  if (firstThumbnailImg) {
+    firstThumbnailImg.src = product.thumbnail;
+    firstThumbnailImg.alt = product.title;
+  }
+}
+
 function initProductDetail() {
-  // 1. 하트 버튼 초기화 (상태 토글 및 아이콘 변경)
+  // 1. 하트 버튼 초기화
   const wishBtn = document.querySelector(".btn-wish");
   const heartIcon = wishBtn?.querySelector(".heart-icon");
 
@@ -20,18 +58,24 @@ function initProductDetail() {
       if (heartIcon) {
         heartIcon.textContent = isActive ? "favorite" : "favorite_border";
       }
-      showToast(isActive ? "즐겨찾기에 추가되었습니다." : "즐겨찾기에서 해제되었습니다.");
+      showToast(
+        isActive
+          ? "즐겨찾기에 추가되었습니다."
+          : "즐겨찾기에서 해제되었습니다.",
+      );
     });
   }
 
-  // 2. 갤러리 썸네일 기능 추가
+  // 2. 갤러리 썸네일 기능
   const mainImg = document.querySelector(".main-img");
   const thumbnails = document.querySelectorAll(".thumbnail-item");
 
   if (mainImg && thumbnails.length > 0) {
-    thumbnails.forEach((thumbnail) => {
+    thumbnails.forEach(thumbnail => {
       thumbnail.addEventListener("click", () => {
-        document.querySelector(".thumbnail-item.active")?.classList.remove("active");
+        document
+          .querySelector(".thumbnail-item.active")
+          ?.classList.remove("active");
         thumbnail.classList.add("active");
         const newImgSrc = thumbnail.querySelector("img").getAttribute("src");
         if (newImgSrc) {
@@ -44,7 +88,7 @@ function initProductDetail() {
   // 3. 컬러 칩 선택 기능
   const colorChips = document.querySelectorAll(".chip");
   if (colorChips.length > 0) {
-    colorChips.forEach((chip) => {
+    colorChips.forEach(chip => {
       chip.addEventListener("click", () => {
         document.querySelector(".chip.active")?.classList.remove("active");
         chip.classList.add("active");
@@ -65,7 +109,6 @@ function initProductDetail() {
   const modal = document.querySelector("#tryon-modal");
   const closeModalBtn = document.querySelector(".close-modal");
 
-  // AI 피팅 버튼 (모달 열기)
   tryOnBtn?.addEventListener("click", () => {
     modal?.classList.add("open");
   });
@@ -74,15 +117,17 @@ function initProductDetail() {
     modal?.classList.remove("open");
   });
 
-  // 장바구니 버튼 (토스트)
   cartBtn?.addEventListener("click", () => {
     showToast("장바구니에 상품이 담겼습니다.");
   });
 
-  // 구매하기 버튼
   buyBtn?.addEventListener("click", () => {
     console.log("구매 페이지로 이동 로직 실행");
   });
 }
 
-document.addEventListener("DOMContentLoaded", initProductDetail);
+// DOMContentLoaded에서 둘 다 실행
+document.addEventListener("DOMContentLoaded", () => {
+  loadProductDetail(); // 비동기: 이미지 로드
+  initProductDetail(); // 동기: 이벤트 리스너 등록
+});

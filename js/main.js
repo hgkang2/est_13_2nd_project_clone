@@ -40,12 +40,14 @@ function renderSkeleton() {
               </div>
             </li>
   `;
-  newProductGrid.innerHTML = Array.from({ length: 4 }, () => skeletonHTML).join("");
+  newProductGrid.innerHTML = Array.from({ length: 4 }, () => skeletonHTML).join(
+    "",
+  );
 }
 function productHTML(p, showBadge = false) {
   return `<li class="product-card">
               <div class="product-image-area">
-                <a href="product-detail.html?${p.id}">
+                <a href="product-detail.html?id=${p.id}">
                   <img
                     src="${p.thumbnail}"
                     alt="${p.title}"
@@ -72,7 +74,9 @@ function productHTML(p, showBadge = false) {
 function renderNewProducts(products) {
   const newProducts = products.slice(0, 4);
   // console.log(newProducts);
-  newProductGrid.innerHTML = newProducts.map(np => productHTML(np, true)).join("");
+  newProductGrid.innerHTML = newProducts
+    .map(np => productHTML(np, true))
+    .join("");
 }
 
 fetchProducts();
