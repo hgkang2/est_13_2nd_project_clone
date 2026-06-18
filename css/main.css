@@ -213,6 +213,19 @@
   font-weight: 700;
 }
 
+.more-btn {
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.more-btn:hover {
+  background: rgba(249, 248, 246, 0.9);
+}
+
 .product-section .product-grid .product-card:hover .product-image-area img {
   transform: scale(1.05);
 }
