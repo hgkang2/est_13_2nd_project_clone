@@ -11,7 +11,7 @@ function showToast(message) {
   }, 2000);
 }
 
-// URL에서 id로 상품 찾아서 메인 이미지 + 첫 번째 썸네일 적용
+// URL에서 id로 상품 찾아서 정보 적용
 async function loadProductDetail() {
   const params = new URLSearchParams(window.location.search);
   const productId = Number(params.get("id"));
@@ -37,7 +37,7 @@ async function loadProductDetail() {
     mainImg.alt = product.title;
   }
 
-  // 첫 번째 썸네일 이미지도 교체
+  // 첫 번째 썸네일 이미지 교체
   const firstThumbnailImg = document.querySelector(
     ".thumbnail-item:first-child img",
   );
@@ -45,6 +45,27 @@ async function loadProductDetail() {
     firstThumbnailImg.src = product.thumbnail;
     firstThumbnailImg.alt = product.title;
   }
+
+  // 브랜드명
+  const brandName = document.querySelector(".brand-name");
+  if (brandName) brandName.textContent = product.brand;
+
+  // 상품명 (breadcrumb + 타이틀)
+  const productTitle = document.querySelector(".product-title");
+  if (productTitle) productTitle.textContent = product.title;
+
+  const breadcrumbCurrent = document.querySelector(
+    ".breadcrumb [aria-current='page']",
+  );
+  if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.title;
+
+  // 가격 (sale 관련 .original-price, .discount-rate 는 건드리지 않음)
+  const currentPrice = document.querySelector(".current-price");
+  if (currentPrice)
+    currentPrice.textContent = `${product.price.toLocaleString()}원`;
+
+  // 페이지 타이틀
+  document.title = `ROUNZ | ${product.title}`;
 }
 
 function initProductDetail() {
@@ -128,6 +149,6 @@ function initProductDetail() {
 
 // DOMContentLoaded에서 둘 다 실행
 document.addEventListener("DOMContentLoaded", () => {
-  loadProductDetail(); // 비동기: 이미지 로드
+  loadProductDetail(); // 비동기: 상품 정보 로드
   initProductDetail(); // 동기: 이벤트 리스너 등록
 });
