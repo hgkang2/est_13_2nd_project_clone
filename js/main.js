@@ -1,9 +1,12 @@
 const API = "./data/product.json";
 const newProductGrid = document.querySelector("#new-product-grid");
+const allProductGrid = document.querySelector(".product-grid.all-eyewear");
+const moreBtn = document.querySelector(".more-btn");
 
-let LIMIT = 0;
-let skip = 0;
-let total = null;
+let products = [];
+let currentPage = 1;
+const countPerPage = 12;
+let infiniteMode = false;
 let isLoading = false;
 
 async function fetchProducts() {
@@ -11,16 +14,17 @@ async function fetchProducts() {
     const res = await fetch(API);
     const data = await res.json();
     // console.log(data.products);
+    renderSkeleton();
     products = data.products;
     // console.log(Array.isArray(products));
-    renderSkeleton();
     renderNewProducts(products);
+    renderMoreProducts();
   } catch (error) {
     console.log(error, "에러가 발생했습니다.");
   } finally {
   }
 }
-
+// 스켈레톤 UI
 function renderSkeleton() {
   const skeletonHTML = `
   <li class="product-card">
@@ -42,6 +46,7 @@ function renderSkeleton() {
   `;
   newProductGrid.innerHTML = Array.from({ length: 4 }, () => skeletonHTML).join("");
 }
+// 상품 리스트
 function productHTML(p, showBadge = false) {
   return `<li class="product-card">
               <div class="product-image-area">
@@ -71,10 +76,44 @@ function productHTML(p, showBadge = false) {
     `;
 }
 
+// 신상품
 function renderNewProducts(products) {
   const newProducts = products.slice(0, 4);
   // console.log(newProducts);
   newProductGrid.innerHTML = newProducts.map(np => productHTML(np, true)).join("");
 }
+// 전체 아이웨어
+function renderMoreProducts() {
+  if (isLoading) return;
 
+  isLoading = true;
+
+  const start = (currentPage - 1) * countPerPage;
+  const end = currentPage * countPerPage;
+  const sliced = products.slice(start, end);
+
+  allProductGrid.insertAdjacentHTML("beforeend", sliced.map(p => productHTML(p)).join(""));
+
+  currentPage++;
+
+  if (end >= products.length) {
+    moreBtn.style.display = "none";
+  }
+
+  isLoading = false;
+}
+//  더보기 클릭
+moreBtn.addEventListener("click", () => {
+  renderMoreProducts();
+  infiniteMode = true;
+});
+window.addEventListener("scroll", () => {
+  if (!infiniteMode) return;
+
+  const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+
+  if (nearBottom) {
+    renderMoreProducts();
+  }
+});
 fetchProducts();

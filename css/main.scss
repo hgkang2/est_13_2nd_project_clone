@@ -219,6 +219,20 @@
     }
   }
 }
+.more-btn {
+  display: block;
+  margin: 40px auto 0;
+  padding: 12px 24px;
+
+  border: 1px solid clr.$color-border;
+  background: clr.$color-white;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background: clr.$color-background;
+  }
+}
 
 .product-section .product-grid .product-card:hover .product-image-area img {
   transform: scale(1.05);
