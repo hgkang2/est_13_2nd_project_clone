@@ -38,9 +38,7 @@ async function loadProductDetail() {
   }
 
   // 첫 번째 썸네일 이미지 교체
-  const firstThumbnailImg = document.querySelector(
-    ".thumbnail-item:first-child img",
-  );
+  const firstThumbnailImg = document.querySelector(".thumbnail-item:first-child img");
   if (firstThumbnailImg) {
     firstThumbnailImg.src = product.thumbnail;
     firstThumbnailImg.alt = product.title;
@@ -54,15 +52,12 @@ async function loadProductDetail() {
   const productTitle = document.querySelector(".product-title");
   if (productTitle) productTitle.textContent = product.title;
 
-  const breadcrumbCurrent = document.querySelector(
-    ".breadcrumb [aria-current='page']",
-  );
+  const breadcrumbCurrent = document.querySelector(".breadcrumb [aria-current='page']");
   if (breadcrumbCurrent) breadcrumbCurrent.textContent = product.title;
 
   // 가격 (sale 관련 .original-price, .discount-rate 는 건드리지 않음)
   const currentPrice = document.querySelector(".current-price");
-  if (currentPrice)
-    currentPrice.textContent = `${product.price.toLocaleString()}원`;
+  if (currentPrice) currentPrice.textContent = `${product.price.toLocaleString()}원`;
 
   // 페이지 타이틀
   document.title = `ROUNZ | ${product.title}`;
@@ -76,14 +71,15 @@ function initProductDetail() {
   if (wishBtn) {
     wishBtn.addEventListener("click", () => {
       const isActive = wishBtn.classList.toggle("is-active");
+
       if (heartIcon) {
-        heartIcon.textContent = isActive ? "favorite" : "favorite_border";
+        heartIcon.textContent = "favorite";
+        heartIcon.style.fontVariationSettings = isActive
+          ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
+          : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
       }
-      showToast(
-        isActive
-          ? "즐겨찾기에 추가되었습니다."
-          : "즐겨찾기에서 해제되었습니다.",
-      );
+
+      showToast(isActive ? "즐겨찾기에 추가되었습니다." : "즐겨찾기에서 해제되었습니다.");
     });
   }
 
@@ -94,9 +90,7 @@ function initProductDetail() {
   if (mainImg && thumbnails.length > 0) {
     thumbnails.forEach(thumbnail => {
       thumbnail.addEventListener("click", () => {
-        document
-          .querySelector(".thumbnail-item.active")
-          ?.classList.remove("active");
+        document.querySelector(".thumbnail-item.active")?.classList.remove("active");
         thumbnail.classList.add("active");
         const newImgSrc = thumbnail.querySelector("img").getAttribute("src");
         if (newImgSrc) {
@@ -139,6 +133,40 @@ function initProductDetail() {
   });
 
   cartBtn?.addEventListener("click", () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id") || "default-id";
+
+    const productName = document.querySelector(".product-title")?.textContent;
+    const productPrice = document.querySelector(".current-price")?.textContent;
+    const productImage = document.querySelector(".main-img")?.getAttribute("src");
+
+    if (!productName || !productPrice || !productImage) {
+      showToast("상품 정보를 불러오지 못했습니다.");
+      return;
+    }
+
+    const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, ""), 10);
+
+    const cartItem = {
+      id: productId,
+      name: productName,
+      price: numericPrice,
+      image: productImage,
+      quantity: 1,
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItemIndex = cart.findIndex(item => item.id === cartItem.id);
+    if (existingItemIndex > -1) {
+      cart[existingItemIndex].quantity += 1;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    console.log("장바구니에 담긴 데이터:", cartItem);
     showToast("장바구니에 상품이 담겼습니다.");
   });
 
