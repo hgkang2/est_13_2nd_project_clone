@@ -42,36 +42,35 @@ function renderSkeleton() {
   `;
   newProductGrid.innerHTML = Array.from({ length: 4 }, () => skeletonHTML).join("");
 }
-
-function renderNewProducts(products) {
-  const newProducts = products.slice(0, 4);
-  console.log(newProducts);
-  newProductGrid.innerHTML = newProducts
-    .map(np => {
-      return `<li class="product-card">
+function productHTML(p, showBadge = false) {
+  return `<li class="product-card">
               <div class="product-image-area">
                 <img
-                  src="${np.thumbnail}"
-                  alt="${np.title}"
+                  src="${p.thumbnail}"
+                  alt="${p.title}"
                 />
-                <span class="badge new-badge">NEW</span>
+                ${showBadge ? '<span class="badge new-badge">NEW</span>' : ""}
               </div>
               <div class="product-info">
-                <span class="product-brand heading-xs">${np.brand}</span>
-                <h3 class="product-name heading-m">${np.title}</h3>
+                <span class="product-brand heading-xs">${p.brand}</span>
+                <h3 class="product-name heading-m">${p.title}</h3>
                 <div class="color-options">
                   <span class="color-swatch silver"></span>
                   <span class="color-swatch yellow"></span>
                   <span class="color-swatch brown"></span>
                 </div>
                 <div class="product-price-area">
-                  <strong class="price">${np.price.toLocaleString()}원</strong>
+                  <strong class="price">${p.price.toLocaleString()}원</strong>
                 </div>
               </div>
             </li>
     `;
-    })
-    .join("");
+}
+
+function renderNewProducts(products) {
+  const newProducts = products.slice(0, 4);
+  // console.log(newProducts);
+  newProductGrid.innerHTML = newProducts.map(np => productHTML(np, true)).join("");
 }
 
 fetchProducts();
