@@ -2,195 +2,306 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f9f8f6;
-  min-height: 100vh;
-  padding: 80px 80px;
+  background-color: rgba(249, 248, 246, 0.9);
+  height: calc(100vh - 64px);
 }
 
 .login-card {
-  padding: 52px 48px;
   width: 100%;
-  max-width: 480px;
+  max-width: 448px;
+  padding: 16px 96px;
 }
-
-.login-heading {
-  font-size: 32px;
+.login-card .login-heading {
+  font-family: "Inter", sans-serif;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.4;
   text-align: center;
   color: rgba(24, 24, 27, 0.9);
   margin-bottom: 8px;
 }
-
-.login-subheading {
+.login-card .login-subheading {
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: center;
-  color: rgba(24, 24, 27, 0.6);
+  color: rgba(24, 24, 27, 0.9);
   margin-bottom: 36px;
 }
-
-.form-group {
+.login-card .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 24px;
 }
-.form-group .form-label {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.6;
+.login-card .form-group .form-label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
   color: rgba(24, 24, 27, 0.8);
 }
-.form-group .form-input {
+.login-card .form-group .form-input {
   width: 100%;
   padding: 12px 14px;
   border: 1.5px solid #e4e4e7;
   border-radius: 8px;
-  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: rgba(24, 24, 27, 0.8);
-  background-color: rgba(249, 248, 246, 0.9);
+  background-color: #ffffff;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
-.form-group .form-input::-moz-placeholder {
-  color: #c0c0c0;
+.login-card .form-group .form-input::-moz-placeholder {
+  color: rgba(24, 24, 27, 0.6);
 }
-.form-group .form-input::placeholder {
-  color: #c0c0c0;
+.login-card .form-group .form-input::placeholder {
+  color: rgba(24, 24, 27, 0.6);
 }
-.form-group .form-input:focus {
+.login-card .form-group .form-input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  background-color: #ffffff;
 }
-
-.form-options {
+.login-card .form-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 8px 0 24px;
 }
-.form-options .checkbox-label {
+.login-card .form-options .checkbox-label {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
   color: rgba(24, 24, 27, 0.8);
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
-.form-options .checkbox-label input[type=checkbox] {
+.login-card .form-options .checkbox-label input[type=checkbox] {
   width: 15px;
   height: 15px;
   accent-color: #2563eb;
   cursor: pointer;
   flex-shrink: 0;
 }
-.form-options .forgot-link {
-  font-size: 16px;
+.login-card .form-options .forgot-link {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: rgba(24, 24, 27, 0.6);
   transition: color 0.15s ease;
+  cursor: pointer;
 }
-.form-options .forgot-link:hover {
+.login-card .form-options .forgot-link:hover {
   color: #2563eb;
 }
-
-.btn-login {
+.login-card .btn-login {
   display: block;
   width: 100%;
   padding: 14px;
   background-color: #2563eb;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
   border-radius: 8px;
   transition: background-color 0.15s ease, transform 0.1s;
 }
-.btn-login:hover {
+.login-card .btn-login:hover {
   background-color: #162e93;
 }
-.btn-login:active {
+.login-card .btn-login:active {
   transform: scale(0.99);
 }
-
-.signup-row {
-  font-size: 16px;
+.login-card .signup-row {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: center;
-  color: rgba(24, 24, 27, 0.6);
+  color: rgba(24, 24, 27, 0.9);
   margin-top: 24px;
 }
-.signup-row .signup-link {
+.login-card .signup-row .signup-link {
   color: #2563eb;
-  font-weight: 700;
+  font-weight: 500;
   transition: opacity 0.15s ease;
 }
-.signup-row .signup-link:hover {
+.login-card .signup-row .signup-link:hover {
   opacity: 0.75;
 }
-
-.divider {
+.login-card .divider {
   display: flex;
   align-items: center;
   gap: 12px;
   margin: 24px 0;
-  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
-  color: #c0c0c0;
+  line-height: 1.5;
+  color: rgba(24, 24, 27, 0.6);
 }
-.divider::before, .divider::after {
+.login-card .divider::before, .login-card .divider::after {
   content: "";
   flex: 1;
   height: 1px;
-  background-color: #e4e4e7;
+  background-color: rgba(22, 46, 147, 0.5);
 }
-
-.social-btn-list {
+.login-card .social-btn-list {
   display: flex;
   gap: 24px;
 }
-.social-btn-list .btn-social {
+.login-card .social-btn-list .btn-social {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 12px;
-  border: 1.5px solid #e4e4e7;
+  border: 1.5px solid rgba(22, 46, 147, 0.5);
   border-radius: 8px;
-  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.6;
-  color: rgba(24, 24, 27, 0.8);
-  background-color: #ffffff;
+  line-height: 1.5;
+  color: #18181b;
+  background-color: rgba(249, 248, 246, 0.9);
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
-.social-btn-list .btn-social:hover {
+.login-card .social-btn-list .btn-social:hover {
   background-color: #f8f8f8;
   border-color: #c0c0c0;
 }
-
-.error-msg {
-  font-size: 14px;
+.login-card .error-msg {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #ff0000;
   margin-top: 4px;
 }
-
-.input-error {
+.login-card .input-error {
   border-color: #ff0000 !important;
+}
+
+@media (max-width: 1199px) {
+  .login-main {
+    height: auto;
+    min-height: calc(100vh - 64px);
+  }
+  .login-card {
+    padding: 16px 40px;
+  }
+  .login-card .login-heading {
+    font-size: 24px;
+  }
+  .login-card .login-subheading {
+    font-size: 15px;
+  }
+  .login-card .form-group .form-label {
+    font-size: 15px;
+  }
+  .login-card .form-group .form-input {
+    font-size: 15px;
+  }
+  .login-card .form-options .checkbox-label {
+    font-size: 15px;
+  }
+  .login-card .form-options .forgot-link {
+    font-size: 15px;
+  }
+  .login-card .btn-login {
+    font-size: 15px;
+  }
+  .login-card .signup-row {
+    font-size: 15px;
+  }
+  .login-card .divider {
+    font-size: 15px;
+  }
+  .login-card .social-btn-list {
+    gap: 16px;
+  }
+  .login-card .social-btn-list .btn-social {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .login-main {
+    height: auto;
+    min-height: calc(100vh - 64px);
+    align-items: flex-start;
+  }
+  .login-card {
+    padding: 16px 20px;
+    max-width: 100%;
+  }
+  .login-card .login-heading {
+    font-size: 20px;
+  }
+  .login-card .login-subheading {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .login-card .form-group {
+    margin-bottom: 16px;
+  }
+  .login-card .form-group .form-label {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .login-card .form-group .form-input {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .login-card .form-options .checkbox-label {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .login-card .form-options .forgot-link {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .login-card .btn-login {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .login-card .signup-row {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .login-card .social-btn-list {
+    gap: 12px;
+  }
+  .login-card .social-btn-list .btn-social {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
 }/*# sourceMappingURL=login.css.map */

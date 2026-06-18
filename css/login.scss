@@ -9,50 +9,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f9f8f6;
-  min-height: 100vh;
-  padding: 80px 80px;
+  background-color: clr.$color-background;
+  height: calc(100vh - 64px);
 }
 
 // 로그인 카드
 .login-card {
-  padding: 52px 48px;
   width: 100%;
-  max-width: 480px;
-}
+  max-width: 448px;
+  padding: 16px 96px;
 
-  // 카드 타이틀 - 섹션 제목 32px
+  // 카드 타이틀 - 36px
   .login-heading {
-    font-size: 32px;
-    font-weight: var.$weight-bold;
-    line-height: 1.3;
+    @include typo.font-l(var.$weight-bold);
     text-align: center;
     color: clr.$color-title;
     margin-bottom: 8px;
   }
 
-  // 카드 서브타이틀 - 본문 16px
+  // 카드 서브타이틀
   .login-subheading {
-    font-size: 16px;
-    font-weight: var.$weight-regular;
-    line-height: 1.6;
+    @include typo.font-m(var.$weight-regular);
     text-align: center;
-    color: clr.$color-muted;
+    color: clr.$color-title;
     margin-bottom: 36px;
   }
 
   // 폼 그룹 (라벨 + 인풋 묶음)
   .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
 
     // 인풋 라벨
     .form-label {
-      font-size: 16px;
-      font-weight: var.$weight-bold;
-      line-height: 1.6;
+      @include typo.font-s(var.$weight-medium);
       color: clr.$color-text;
     }
 
@@ -62,22 +54,21 @@
       padding: 12px 14px;
       border: 1.5px solid clr.$color-border;
       border-radius: 8px;
-      font-size: 16px;
-      font-weight: var.$weight-regular;
-      line-height: 1.6;
+      @include typo.font-s(var.$weight-regular);
       color: clr.$color-text;
-      background-color: clr.$color-background;
+      background-color: clr.$color-white;
       outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 
       &::placeholder {
-        color: clr.$color-border-light;
+        color: clr.$color-muted;
       }
 
       &:focus {
         border-color: clr.$color-primary;
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        background-color: clr.$color-white;
       }
     }
   }
@@ -93,9 +84,7 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 16px;
-      font-weight: var.$weight-regular;
-      line-height: 1.6;
+      @include typo.font-s(var.$weight-medium);
       color: clr.$color-text;
       cursor: pointer;
       user-select: none;
@@ -109,13 +98,11 @@
       }
     }
 
-    // 비밀번호 찾기 링크
     .forgot-link {
-      font-size: 16px;
-      font-weight: var.$weight-regular;
-      line-height: 1.6;
+      @include typo.font-s(var.$weight-regular);
       color: clr.$color-muted;
       transition: color 0.15s ease;
+      cursor: pointer;
 
       &:hover { color: clr.$color-primary; }
     }
@@ -128,30 +115,27 @@
     padding: 14px;
     background-color: clr.$color-primary;
     color: clr.$color-white;
-    font-size: 16px;
-    font-weight: var.$weight-bold;
-    line-height: 1.6;
+    @include typo.font-s(var.$weight-medium);
     border-radius: 8px;
-    transition: background-color 0.15s ease, transform 0.1s;
+    transition:
+      background-color 0.15s ease,
+      transform 0.1s;
 
-    &:hover  { background-color: clr.$color-primary-dark;}
-    &:active { transform: scale(0.99);}
+    &:hover { background-color: clr.$color-primary-dark; }
+    &:active { transform: scale(0.99); }
   }
 
   // 회원가입 안내
   .signup-row {
-    font-size: 16px;
-    font-weight: var.$weight-regular;
-    line-height: 1.6;
+    @include typo.font-s(var.$weight-regular);
     text-align: center;
-    color: clr.$color-muted;
+    color: clr.$color-title;
     margin-top: 24px;
 
     .signup-link {
       color: clr.$color-primary;
-      font-weight: var.$weight-bold;
+      font-weight: var.$weight-medium;
       transition: opacity 0.15s ease;
-
       &:hover { opacity: 0.75; }
     }
   }
@@ -162,17 +146,15 @@
     align-items: center;
     gap: 12px;
     margin: 24px 0;
-    font-size: 16px;
-    font-weight: var.$weight-regular;
-    line-height: 1.6;
-    color: clr.$color-border-light;
+    @include typo.font-s(var.$weight-regular);
+    color: clr.$color-muted;
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       flex: 1;
       height: 1px;
-      background-color: clr.$color-border;
+      background-color: rgba(22, 46, 147, 0.5);
     }
   }
 
@@ -188,14 +170,14 @@
       justify-content: center;
       gap: 8px;
       padding: 12px;
-      border: 1.5px solid clr.$color-border;
+      border: 1.5px solid rgba(22, 46, 147, 0.5);
       border-radius: 8px;
-      font-size: 16px;
-      font-weight: var.$weight-medium;
-      line-height: 1.6;
-      color: clr.$color-text;
-      background-color: clr.$color-white;
-      transition: background-color 0.15s ease, border-color 0.15s ease;
+      @include typo.font-s(var.$weight-medium);
+      color: clr.$color-dark;
+      background-color: clr.$color-background;
+      transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
 
       &:hover {
         background-color: clr.$color-filter-hover;
@@ -203,16 +185,66 @@
       }
     }
   }
-// 에러 메시지
-.error-msg {
-  font-size: 14px;
-  font-weight: var.$weight-regular;
-  line-height: 1.6;
-  color: clr.$color-error;
-  margin-top: 4px;
+
+  // 에러 메시지
+  .error-msg {
+    @include typo.font-xs(var.$weight-regular);
+    color: clr.$color-error;
+    margin-top: 4px;
+  }
+
+  // 에러 상태 인풋
+  .input-error {
+    border-color: clr.$color-error !important;
+  }
 }
 
-// 에러 상태 인풋 테두리
-.input-error {
-  border-color: clr.$color-error !important;
+// 태블릿 (~ 1199px)
+@media (max-width: 1199px) {
+  .login-main {
+    height: auto;
+    min-height: calc(100vh - 64px);
+  }
+
+  .login-card {
+    padding: 16px 40px;
+
+    .login-heading { font-size: 24px; }
+    .login-subheading { font-size: 15px; }
+    .form-group .form-label { font-size: 15px; }
+    .form-group .form-input { font-size: 15px; }
+    .form-options .checkbox-label { font-size: 15px; }
+    .form-options .forgot-link { font-size: 15px; }
+    .btn-login { font-size: 15px; }
+    .signup-row { font-size: 15px; }
+    .divider { font-size: 15px; }
+    .social-btn-list { gap: 16px; }
+    .social-btn-list .btn-social { font-size: 15px; }
+  }
+}
+
+// 모바일 (~ 767px)
+@media (max-width: 767px) {
+  .login-main {
+    height: auto;
+    min-height: calc(100vh - 64px);
+    align-items: flex-start;
+  }
+
+  .login-card {
+    padding: 16px 20px;
+    max-width: 100%;
+
+    .login-heading { font-size: 20px; }
+    .login-subheading { @include typo.font-xs(var.$weight-regular); }
+    .form-group { margin-bottom: 16px; }
+    .form-group .form-label { @include typo.font-xs(var.$weight-medium); }
+    .form-group .form-input { @include typo.font-xs(var.$weight-regular); }
+    .form-options .checkbox-label { @include typo.font-xs(var.$weight-medium); }
+    .form-options .forgot-link { @include typo.font-xs(var.$weight-regular); }
+    .btn-login { @include typo.font-xs(var.$weight-medium); }
+    .signup-row { @include typo.font-xs(var.$weight-regular); }
+    .social-btn-list { gap: 12px; }
+    .social-btn-list .btn-social { @include typo.font-xs(var.$weight-medium); }
+  }
 }
