@@ -3,9 +3,29 @@
 @use "./colors" as clr;
 
 .product-detail-container {
-  max-width: 600px;
+  max-width: 100%; // 모바일 기본
   margin: 0 auto;
   padding: 8px 16px 16px 16px;
+  transition: all 0.3s ease;
+
+  // 태블릿 반응형 (768px 이상)
+  @media (min-width: 768px) {
+    max-width: 768px;
+    padding: 24px 40px;
+  }
+
+  // 데스크탑 반응형 (1200px 이상)
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    padding: 40px 80px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+
+    > section {
+      flex: 1;
+    }
+  }
 
   > section {
     margin: 0;
@@ -90,16 +110,13 @@
         cursor: pointer;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s;
-
         &:active {
           transform: scale(0.9);
         }
-
         .heart-icon {
           color: #a1a1aa;
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         &.is-active {
           .heart-icon {
             color: #a1a1aa;
@@ -160,12 +177,10 @@
       .benefit-title {
         @include typo.font-s(var.$weight-regular);
         color: clr.$color-title;
-        margin-bottom: 0;
       }
       .benefit-desc {
         @include typo.font-2xs(var.$weight-regular);
         color: clr.$color-muted;
-        margin-top: 0;
       }
     }
   }
@@ -183,6 +198,12 @@
       @include typo.font-l(var.$weight-bold);
       color: clr.$color-title;
       margin-bottom: 12px;
+      @media (min-width: 768px) {
+        font-size: 36px;
+      }
+      @media (min-width: 1200px) {
+        font-size: 48px;
+      }
     }
     .rating-group {
       display: flex;
@@ -265,21 +286,6 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      .btn-primary,
-      .btn-secondary {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        &:active {
-          transform: scale(0.97);
-          filter: brightness(0.9);
-        }
-        .material-symbols-outlined {
-          font-size: 1em;
-          margin-right: 8px;
-        }
-      }
       .btn-primary {
         width: 100%;
         height: 56px;
@@ -311,6 +317,7 @@
       }
     }
   }
+
   .product-specs-section {
     .specs-box {
       border: 1.5px solid #d4d4d8;
@@ -321,7 +328,6 @@
     .specs-heading {
       padding: 16px 20px;
       border-bottom: 1.5px solid #d4d4d8;
-      background: #f4f4f5;
       @include typo.font-s(var.$weight-regular);
       color: #99a1af;
       margin: 0;
@@ -336,12 +342,6 @@
         border-bottom: 1.5px solid #d4d4d8;
         border-right: 1.5px solid #d4d4d8;
         &:nth-child(2n) {
-          border-right: none;
-        }
-        &:nth-last-child(-n + 2) {
-          border-bottom: none;
-        }
-        &:last-child:nth-child(odd) {
           border-right: none;
         }
         dt {
@@ -370,7 +370,6 @@
   }
 }
 
-/* 알림창 & 모달 스타일 */
 .toast {
   position: fixed;
   bottom: 24px;
