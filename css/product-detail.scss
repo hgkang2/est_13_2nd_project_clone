@@ -34,16 +34,16 @@
 }
 
 .product-detail-container {
-  max-width: 100%;
+  max-width: 100%; // 모바일 기본
   margin: 0 auto;
   padding: 8px 16px 16px 16px;
   transition: all 0.3s ease;
-
+  // 태블릿 반응형 (768px 이상)
   @media (min-width: 768px) {
     max-width: 768px;
     padding: 24px 40px;
   }
-
+  // 데스크탑 반응형 (1200px 이상)
   @media (min-width: 1200px) {
     max-width: 1200px;
     padding: 40px 80px;
