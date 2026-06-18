@@ -2,18 +2,47 @@
 @use "./typography" as typo;
 @use "./colors" as clr;
 
+.breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 80px 0;
+
+  ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      @include typo.font-xs(var.$weight-regular);
+      color: clr.$color-muted;
+
+      &:not(:last-child)::after {
+        content: "/";
+        margin: 0 8px;
+        color: clr.$color-border;
+      }
+
+      &[aria-current="page"] {
+        color: clr.$color-dark;
+        font-weight: var.$weight-bold;
+      }
+    }
+  }
+}
+
 .product-detail-container {
   max-width: 100%; // 모바일 기본
   margin: 0 auto;
   padding: 8px 16px 16px 16px;
   transition: all 0.3s ease;
-
   // 태블릿 반응형 (768px 이상)
   @media (min-width: 768px) {
     max-width: 768px;
     padding: 24px 40px;
   }
-
   // 데스크탑 반응형 (1200px 이상)
   @media (min-width: 1200px) {
     max-width: 1200px;
@@ -33,31 +62,6 @@
     border: none;
     &:last-child {
       padding-bottom: 0;
-    }
-  }
-
-  .breadcrumb {
-    padding: 12px 0 24px 0;
-    ol {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      li {
-        display: flex;
-        align-items: center;
-        @include typo.font-xs(var.$weight-regular);
-        color: clr.$color-muted;
-        &:not(:last-child)::after {
-          content: "/";
-          margin: 0 8px;
-          color: clr.$color-border;
-        }
-        &[aria-current="page"] {
-          color: clr.$color-dark;
-          font-weight: var.$weight-bold;
-        }
-      }
     }
   }
 
