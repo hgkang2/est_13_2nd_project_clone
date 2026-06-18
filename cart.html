@@ -7,19 +7,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/common.css" />
@@ -31,7 +18,7 @@
       <h1 class="cart-title">장바구니</h1>
 
       <!-- ── Empty State ── -->
-      <section class="cart-empty" id="cartEmpty">
+      <div class="cart-empty" id="cartEmpty">
         <svg
           class="cart-empty__icon"
           viewBox="0 0 56 56"
@@ -59,10 +46,10 @@
         <button class="cart-empty__btn" id="goShoppingBtn">
           쇼핑 계속하기
         </button>
-      </section>
+      </div>
 
       <!-- ── Filled State ── -->
-      <section class="cart-filled hidden" id="cartFilled">
+      <div class="cart-filled hidden" id="cartFilled">
         <!-- Items Column -->
         <div class="cart-items">
           <div class="cart-items__header">
@@ -115,7 +102,7 @@
             0개 상품 주문하기
           </button>
         </aside>
-      </section>
+      </div>
     </main>
     <footer id="footer"></footer>
     <script src="/js/cart.js"></script>
