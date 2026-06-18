@@ -191,7 +191,7 @@
 
   .product-info-section {
     .brand-name {
-      font-size: 16px;
+      @include typo.font-xs(var.$weight-regular);
       font-weight: var.$weight-regular;
       color: clr.$color-muted;
       text-transform: uppercase;
