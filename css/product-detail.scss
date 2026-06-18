@@ -1,5 +1,5 @@
-@use "./variables" as var;
 @use "./typography" as typo;
+@use "./variables" as var;
 @use "./colors" as clr;
 
 .breadcrumb {
@@ -336,15 +336,12 @@
           &.chip-grey {
             background-color: #d1d5db;
           }
-
           &.chip-yellow {
             background-color: #facc15;
           }
-
           &.chip-black {
             background-color: #000;
           }
-
           &.active {
             border-color: clr.$color-primary;
           }
@@ -357,6 +354,36 @@
       flex-direction: column;
       gap: 12px;
 
+      .btn-primary,
+      .btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        padding: 0 16px;
+        transition:
+          transform 0.1s,
+          filter 0.1s;
+
+        .material-symbols-outlined {
+          font-size: 20px;
+          margin-right: 8px;
+          position: relative;
+          top: -1px;
+        }
+
+        .btn-text {
+          display: flex;
+          align-items: center;
+        }
+
+        &:active {
+          transform: scale(0.97);
+          filter: brightness(0.9);
+        }
+      }
+
       .btn-primary {
         width: 100%;
         height: 56px;
@@ -365,17 +392,11 @@
         background: clr.$color-primary;
         color: #fff;
         @include typo.font-m(var.$weight-bold);
-        cursor: pointer;
-
-        &:hover {
-          background: clr.$color-primary-dark;
-        }
       }
 
       .sub-buttons-wrap {
         display: flex;
         gap: 12px;
-
         .btn-secondary {
           flex: 1;
           height: 56px;
@@ -383,11 +404,6 @@
           border: 1px solid clr.$color-border;
           background: #fff;
           @include typo.font-m(var.$weight-medium);
-          cursor: pointer;
-
-          &:hover {
-            background: #f9fafb;
-          }
         }
       }
     }
@@ -464,7 +480,6 @@
   font-size: 14px;
   transition: transform 0.3s ease;
   z-index: 1000;
-
   &.show {
     transform: translateX(-50%) translateY(0);
   }
@@ -479,13 +494,11 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2000;
-
   &.open {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
   .modal-content {
     background: white;
     padding: 24px;
@@ -493,7 +506,6 @@
     width: 90%;
     max-width: 500px;
     position: relative;
-
     .close-modal {
       position: absolute;
       top: 16px;
