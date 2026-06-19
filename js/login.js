@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form       = document.getElementById('login-form');
   const emailInput = document.getElementById('login-email');
   const pwInput    = document.getElementById('login-password');
+  const submitBtn  = document.querySelector('.btn-login');
 
   const showError  = (input, msg) => {
     input.parentNode.querySelector('.error-msg')?.remove();
@@ -14,9 +15,33 @@ document.addEventListener('DOMContentLoaded', () => {
     input.classList.remove('input-error');
   };
 
-  emailInput.addEventListener('input', () => clearError(emailInput));
-  pwInput.addEventListener('input',    () => clearError(pwInput));
+  // 버튼 초기 비활성화
+  submitBtn.disabled = true;
 
+  // 버튼 활성화/비활성화
+  const updateBtn = () => {
+    const allFilled =
+      emailInput.value.trim() &&
+      pwInput.value.trim();
+    submitBtn.disabled = !allFilled;
+  };
+
+  // 입력 시 버튼 활성화 체크
+  [emailInput, pwInput].forEach(input => input.addEventListener('input', updateBtn));
+
+  // blur 시 유효성 검사
+  emailInput.addEventListener('blur', () => {
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    if (!isValid) showError(emailInput, '이메일이 올바르지 않습니다.');
+    else clearError(emailInput);
+  });
+
+  pwInput.addEventListener('blur', () => {
+    if (!pwInput.value.trim()) showError(pwInput, '비밀번호가 올바르지 않습니다.');
+    else clearError(pwInput);
+  });
+
+  // submit 최종 검사
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 

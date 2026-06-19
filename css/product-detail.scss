@@ -495,6 +495,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2000;
+
   &.open {
     display: flex;
     align-items: center;
@@ -509,7 +510,15 @@
     max-width: 500px;
     position: relative;
     text-align: center;
-
+    .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 24px;
+    }
     p {
       margin-bottom: 0;
       line-height: 1.5;

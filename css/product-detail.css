@@ -494,6 +494,15 @@
   position: relative;
   text-align: center;
 }
+.modal .modal-content .close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 24px;
+}
 .modal .modal-content p {
   margin-bottom: 0;
   line-height: 1.5;
