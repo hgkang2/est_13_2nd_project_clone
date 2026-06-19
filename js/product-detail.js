@@ -1,6 +1,6 @@
 const API = "./data/product.json";
 
-// 0. 토스트 메시지
+//토스트 메시지
 function showToast(message) {
   const toast = document.querySelector("#toast");
   if (!toast) return;
@@ -71,13 +71,15 @@ async function loadProductDetail() {
 function initProductDetail() {
   // 1. 하트 버튼 초기화
   const wishBtn = document.querySelector(".btn-wish");
-  const heartIcon = wishBtn?.querySelector(".heart-icon");
-
   if (wishBtn) {
     wishBtn.addEventListener("click", () => {
+      const heartIcon = wishBtn.querySelector(".heart-icon");
       const isActive = wishBtn.classList.toggle("is-active");
       if (heartIcon) {
-        heartIcon.textContent = isActive ? "favorite" : "favorite_border";
+        heartIcon.textContent = "favorite";
+        heartIcon.style.fontVariationSettings = isActive
+          ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
+          : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24";
       }
       showToast(
         isActive
@@ -90,7 +92,6 @@ function initProductDetail() {
   // 2. 갤러리 썸네일 기능
   const mainImg = document.querySelector(".main-img");
   const thumbnails = document.querySelectorAll(".thumbnail-item");
-
   if (mainImg && thumbnails.length > 0) {
     thumbnails.forEach(thumbnail => {
       thumbnail.addEventListener("click", () => {
@@ -99,26 +100,22 @@ function initProductDetail() {
           ?.classList.remove("active");
         thumbnail.classList.add("active");
         const newImgSrc = thumbnail.querySelector("img").getAttribute("src");
-        if (newImgSrc) {
-          mainImg.setAttribute("src", newImgSrc);
-        }
+        if (newImgSrc) mainImg.setAttribute("src", newImgSrc);
       });
     });
   }
 
   // 3. 컬러 칩 선택 기능
+  let selectedColor = "기본";
   const colorChips = document.querySelectorAll(".chip");
   if (colorChips.length > 0) {
     colorChips.forEach(chip => {
       chip.addEventListener("click", () => {
         document.querySelector(".chip.active")?.classList.remove("active");
         chip.classList.add("active");
-        const colorName = chip.classList.contains("chip-grey")
-          ? "그레이"
-          : chip.classList.contains("chip-yellow")
-            ? "옐로우"
-            : "블랙";
-        console.log(`선택된 컬러: ${colorName}`);
+        selectedColor =
+          chip.getAttribute("aria-label")?.replace(" 컬러 선택", "") || "기본";
+        console.log(`선택된 컬러: ${selectedColor}`);
       });
     });
   }
@@ -130,15 +127,67 @@ function initProductDetail() {
   const modal = document.querySelector("#tryon-modal");
   const closeModalBtn = document.querySelector(".close-modal");
 
-  tryOnBtn?.addEventListener("click", () => {
-    modal?.classList.add("open");
-  });
+  const cartConfirmModal = document.querySelector("#cart-confirm-modal");
+  const goToCartBtn = document.querySelector("#go-to-cart");
+  const closeCartModalBtn = document.querySelector("#close-cart-modal");
 
-  closeModalBtn?.addEventListener("click", () => {
-    modal?.classList.remove("open");
-  });
+  tryOnBtn?.addEventListener("click", () => modal?.classList.add("open"));
+  closeModalBtn?.addEventListener("click", () =>
+    modal?.classList.remove("open"),
+  );
 
   cartBtn?.addEventListener("click", () => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id") || "default-id";
+
+    const productBrand =
+      document.querySelector(".brand-name")?.textContent ?? ""; // 추가
+    const productName = document.querySelector(".product-title")?.textContent;
+    const productPrice = document.querySelector(".current-price")?.textContent;
+    const productImage = document
+      .querySelector(".main-img")
+      ?.getAttribute("src");
+
+    if (!productName || !productPrice || !productImage) {
+      showToast("상품 정보를 불러오지 못했습니다.");
+      return;
+    }
+
+    const numericPrice = parseInt(productPrice.replace(/[^0-9]/g, ""), 10);
+
+    const cartItem = {
+      id: productId,
+      brand: productBrand, // 추가
+      name: productName,
+      price: numericPrice,
+      image: productImage,
+      color: selectedColor,
+      quantity: 1,
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItemIndex = cart.findIndex(
+      item => item.id === cartItem.id && item.color === cartItem.color,
+    );
+    if (existingItemIndex > -1) {
+      cart[existingItemIndex].quantity += 1;
+    } else {
+      cart.push(cartItem);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("장바구니에 담긴 데이터:", cartItem);
+
+    cartConfirmModal?.classList.add("open");
+  });
+
+  goToCartBtn?.addEventListener("click", () => {
+    window.location.href = "cart.html";
+  });
+
+  closeCartModalBtn?.addEventListener("click", () => {
+    cartConfirmModal?.classList.remove("open");
     showToast("장바구니에 상품이 담겼습니다.");
   });
 
@@ -149,6 +198,6 @@ function initProductDetail() {
 
 // DOMContentLoaded에서 둘 다 실행
 document.addEventListener("DOMContentLoaded", () => {
-  loadProductDetail(); // 비동기: 상품 정보 로드
-  initProductDetail(); // 동기: 이벤트 리스너 등록
+  loadProductDetail();
+  initProductDetail();
 });

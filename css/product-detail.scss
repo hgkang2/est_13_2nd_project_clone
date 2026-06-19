@@ -1,5 +1,5 @@
-@use "./variables" as var;
 @use "./typography" as typo;
+@use "./variables" as var;
 @use "./colors" as clr;
 
 .breadcrumb {
@@ -336,15 +336,12 @@
           &.chip-grey {
             background-color: #d1d5db;
           }
-
           &.chip-yellow {
             background-color: #facc15;
           }
-
           &.chip-black {
             background-color: #000;
           }
-
           &.active {
             border-color: clr.$color-primary;
           }
@@ -357,6 +354,37 @@
       flex-direction: column;
       gap: 12px;
 
+      .btn-primary,
+      .btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative; // 아이콘 정렬 기준점
+        padding: 0 16px;
+        transition:
+          transform 0.1s,
+          filter 0.1s;
+
+        .material-symbols-outlined {
+          font-size: 20px;
+          margin-right: 8px;
+          // 아이콘을 버튼 높이의 정중앙에 강제로 고정
+          position: relative;
+          top: -1px;
+        }
+
+        .btn-text {
+          display: flex;
+          align-items: center;
+        }
+
+        &:active {
+          transform: scale(0.97);
+          filter: brightness(0.9);
+        }
+      }
+
       .btn-primary {
         width: 100%;
         height: 56px;
@@ -365,17 +393,11 @@
         background: clr.$color-primary;
         color: #fff;
         @include typo.font-m(var.$weight-bold);
-        cursor: pointer;
-
-        &:hover {
-          background: clr.$color-primary-dark;
-        }
       }
 
       .sub-buttons-wrap {
         display: flex;
         gap: 12px;
-
         .btn-secondary {
           flex: 1;
           height: 56px;
@@ -383,11 +405,6 @@
           border: 1px solid clr.$color-border;
           background: #fff;
           @include typo.font-m(var.$weight-medium);
-          cursor: pointer;
-
-          &:hover {
-            background: #f9fafb;
-          }
         }
       }
     }
@@ -464,7 +481,6 @@
   font-size: 14px;
   transition: transform 0.3s ease;
   z-index: 1000;
-
   &.show {
     transform: translateX(-50%) translateY(0);
   }
@@ -479,13 +495,12 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2000;
-
   &.open {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
+  /* 모달 내용 박스 */
   .modal-content {
     background: white;
     padding: 24px;
@@ -493,15 +508,41 @@
     width: 90%;
     max-width: 500px;
     position: relative;
+    text-align: center;
 
-    .close-modal {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      cursor: pointer;
-      border: none;
-      background: none;
-      font-size: 24px;
+    p {
+      margin-bottom: 0;
+      line-height: 1.5;
     }
+  }
+
+  /* 버튼 컨테이너 */
+  .modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  /* 버튼 공통 디자인 */
+  .modal-btn {
+    flex: 1;
+    padding: 14px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+
+  .modal-btn:active {
+    filter: brightness(0.85);
+    transform: scale(0.98);
   }
 }
