@@ -360,7 +360,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        position: relative;
+        position: relative; // 아이콘 정렬 기준점
         padding: 0 16px;
         transition:
           transform 0.1s,
@@ -369,6 +369,7 @@
         .material-symbols-outlined {
           font-size: 20px;
           margin-right: 8px;
+          // 아이콘을 버튼 높이의 정중앙에 강제로 고정
           position: relative;
           top: -1px;
         }
@@ -494,11 +495,13 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2000;
+
   &.open {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  /* 모달 내용 박스 */
   .modal-content {
     background: white;
     padding: 24px;
@@ -506,6 +509,7 @@
     width: 90%;
     max-width: 500px;
     position: relative;
+    text-align: center;
     .close-modal {
       position: absolute;
       top: 16px;
@@ -515,5 +519,39 @@
       background: none;
       font-size: 24px;
     }
+    p {
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+  }
+
+  /* 버튼 컨테이너 */
+  .modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  /* 버튼 공통 디자인 */
+  .modal-btn {
+    flex: 1;
+    padding: 14px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+
+  .modal-btn:active {
+    filter: brightness(0.85);
+    transform: scale(0.98);
   }
 }

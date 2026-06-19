@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .breadcrumb {
   max-width: 1200px;
   margin: 0 auto;
@@ -481,6 +482,9 @@
   align-items: center;
   justify-content: center;
 }
+.modal {
+  /* 모달 내용 박스 */
+}
 .modal .modal-content {
   background: white;
   padding: 24px;
@@ -488,6 +492,7 @@
   width: 90%;
   max-width: 500px;
   position: relative;
+  text-align: center;
 }
 .modal .modal-content .close-modal {
   position: absolute;
@@ -497,4 +502,39 @@
   border: none;
   background: none;
   font-size: 24px;
+}
+.modal .modal-content p {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+.modal {
+  /* 버튼 컨테이너 */
+}
+.modal .modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+}
+.modal {
+  /* 버튼 공통 디자인 */
+}
+.modal .modal-btn {
+  flex: 1;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f6;
+  color: #374151;
+}
+.modal .modal-btn:active {
+  filter: brightness(0.85);
+  transform: scale(0.98);
 }/*# sourceMappingURL=product-detail.css.map */

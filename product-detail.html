@@ -34,8 +34,8 @@
     </nav>
 
     <main class="product-detail-container">
-      <!-- ① 갤러리 -->
       <section class="product-gallery">
+        <h2 class="sr-only">상품 이미지</h2>
         <div class="main-image-wrap">
           <div class="badge-group">
             <span class="badge badge-new">NEW</span>
@@ -62,15 +62,13 @@
         </ul>
       </section>
 
-      <!-- 오른쪽 컬럼 wrapper -->
       <div class="product-right-col">
-        <!-- ② 상품 정보 -->
         <section class="product-info-section">
           <span class="brand-name">ROUNZ</span>
-          <h2 class="product-title">Classic Aviator</h2>
+          <h1 class="product-title">Classic Aviator</h1>
 
           <div class="rating-group">
-            <div class="stars" aria-label="별점 4.8점">★★★★★</div>
+            <div class="stars" role="img" aria-label="별점 4.8점">★★★★★</div>
             <span class="rating-score">4.8</span>
             <span class="review-count">(128개 리뷰)</span>
           </div>
@@ -113,8 +111,8 @@
           </div>
         </section>
 
-        <!-- ③ 브랜드 혜택 -->
         <section class="brand-benefits">
+          <h2 class="sr-only">브랜드 혜택</h2>
           <div class="benefit-item">
             <div class="icon-circle">
               <span class="material-symbols-outlined">local_shipping</span>
@@ -138,7 +136,6 @@
           </div>
         </section>
 
-        <!-- ④ 제품 사양 -->
         <section class="product-specs-section">
           <div class="specs-box">
             <h2 class="specs-heading">제품 사양</h2>
@@ -179,12 +176,10 @@
                 <dt>UV 차단</dt>
                 <dd>UV400</dd>
               </div>
-              <div class="spec-item"></div>
             </dl>
           </div>
         </section>
       </div>
-      <!-- /.product-right-col -->
     </main>
 
     <footer id="footer"></footer>
@@ -196,6 +191,16 @@
         <h2>AI 가상 피팅</h2>
         <div class="modal-body">
           <p>가상 피팅 환경을 로드 중입니다...</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="cart-confirm-modal" class="modal">
+      <div class="modal-content">
+        <p>장바구니에 담겼습니다.<br />장바구니 페이지로 이동할까요?</p>
+        <div class="modal-buttons">
+          <button id="go-to-cart" class="modal-btn confirm">이동하기</button>
+          <button id="close-cart-modal" class="modal-btn cancel">계속 쇼핑하기</button>
         </div>
       </div>
     </div>
