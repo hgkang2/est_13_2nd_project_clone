@@ -15,7 +15,7 @@
 
 - 📑 [기획서 (Figma Slide)](https://www.figma.com/slides/AHymjPNruXYlu6MR5QrBc7)
 - 🎨 [디자인 원본 (Figma)](https://www.figma.com/design/6jgwNvxFlyrqz5Oykv0spr/%EB%94%94%EC%9E%90%EC%9D%B8?node-id=0-1&t=bi0Vl7m93YzE4wWc-1)
-- 🌐[ROUNZ Renewal Project](https://jeju-ratus.github.io/est_fe13_2nd_project/)
+- 🌐[ROUNZ Renewal Project](https://hgkang2.github.io/est_13_2nd_project_clone/)
 
 ---
 
@@ -279,7 +279,7 @@ gantt
 
 ## 2.2 배포 URL
 
-- [ROUNZ Renewal Project](https://jeju-ratus.github.io/est_fe13_2nd_project/)
+- [ROUNZ Renewal Project](https://hgkang2.github.io/est_13_2nd_project_clone/)
 
 ---
 
